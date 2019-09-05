@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 21:16:19 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 20:36:23 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 18:26:26 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/05 19:13:38 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char    *ft_strrchr(const char *s, int c)
 {
-	unsigned char *ptr1;
-	unsigned char *ptr2;
+	int				i;
+	char	*ptr;
 
-	ptr1 = (unsigned char *)dst;
-	ptr2 = (unsigned char *)src;
-	if (ptr1 < ptr2)
-		while (len > 0)
-		{
-			len--;
-			ptr1[len] = ptr2[len];
-		}
-	else
-		while (len > 0)
-		{
-			*ptr1++ = *ptr2++;
-			len--;
-		}
-	return (dst);
+	i = 0;
+	ptr = (char *)s;
+	while (*ptr != '\0')
+	{
+		i++;
+		ptr++;
+	}
+	while (i > 0)
+	{
+		i--;
+		if (*ptr == c)
+			return (ptr);
+		ptr--;
+	}
+	return (NULL);
 }

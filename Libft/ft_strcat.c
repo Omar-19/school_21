@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 21:16:19 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 20:36:23 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 16:53:04 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/05 17:26:52 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	unsigned char *ptr1;
-	unsigned char *ptr2;
+	char			*str;
+	unsigned char	*p2;
 
-	ptr1 = (unsigned char *)dst;
-	ptr2 = (unsigned char *)src;
-	if (ptr1 < ptr2)
-		while (len > 0)
-		{
-			len--;
-			ptr1[len] = ptr2[len];
-		}
-	else
-		while (len > 0)
-		{
-			*ptr1++ = *ptr2++;
-			len--;
-		}
-	return (dst);
+	p2 = (unsigned char *)s2;
+	str = s1;
+	while (*str != '\0')
+		str++;
+	while (*p2 != '\0')
+	{
+		*str = *p2;
+		str++;
+		p2++;
+	}
+	*str = '\0';
+	return (s1);
 }

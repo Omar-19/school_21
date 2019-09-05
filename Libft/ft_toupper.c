@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 21:16:19 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 20:36:23 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 20:05:55 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/05 20:08:34 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int		ft_toupper_l(int c, locale_t loc)
 {
-	unsigned char *ptr1;
-	unsigned char *ptr2;
-
-	ptr1 = (unsigned char *)dst;
-	ptr2 = (unsigned char *)src;
-	if (ptr1 < ptr2)
-		while (len > 0)
-		{
-			len--;
-			ptr1[len] = ptr2[len];
-		}
-	else
-		while (len > 0)
-		{
-			*ptr1++ = *ptr2++;
-			len--;
-		}
-	return (dst);
+	if (c >= 'a' && c <= 'z')
+		return (c + 'A' - 'a');
+	return (c);
 }

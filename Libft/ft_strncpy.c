@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 21:16:19 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 20:36:23 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 16:41:35 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/05 16:52:31 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strncpy(char * dst, const char * src, size_t len)
 {
-	unsigned char *ptr1;
-	unsigned char *ptr2;
+	unsigned char	*str;
+	char			*ptr;
+	int				f;
 
-	ptr1 = (unsigned char *)dst;
-	ptr2 = (unsigned char *)src;
-	if (ptr1 < ptr2)
-		while (len > 0)
-		{
-			len--;
-			ptr1[len] = ptr2[len];
-		}
-	else
-		while (len > 0)
-		{
-			*ptr1++ = *ptr2++;
-			len--;
-		}
-	return (dst);
+	f = 0;
+	str = (unsigned char *)src;
+	ptr = dst;
+	while (len > 0)
+	{
+		if (*str == '\0')
+			f = 1;
+		if (f == 0)
+			*ptr = *str;
+		else
+			*ptr = '\0';
+		ptr++;
+		str++;
+		len--;
+	}
+		*ptr = '\0';
+		return (dst);
 }

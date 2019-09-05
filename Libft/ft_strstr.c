@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 21:16:19 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 20:36:23 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 19:15:37 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/05 19:20:20 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	unsigned char *ptr1;
-	unsigned char *ptr2;
+	char *str;
+	char *to_find;
+	char *a;
+	char *b;
 
-	ptr1 = (unsigned char *)dst;
-	ptr2 = (unsigned char *)src;
-	if (ptr1 < ptr2)
-		while (len > 0)
+	str = (char *)haystack;
+	to_find = (char *)needle;
+	while (*str != '\0')
+	{
+		a = str;
+		b = to_find;
+		while (*a == *b || *to_find == '\0')
 		{
-			len--;
-			ptr1[len] = ptr2[len];
+			a++;
+			b++;
+			if (*b == '\0')
+				return (str);
 		}
-	else
-		while (len > 0)
-		{
-			*ptr1++ = *ptr2++;
-			len--;
-		}
-	return (dst);
+		str++;
+	}
+	return (NULL);
 }

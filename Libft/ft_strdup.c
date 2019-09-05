@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 21:16:19 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 20:36:23 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 15:51:49 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/05 16:18:50 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+size_t  ft_strlen(const char *s);
+
+char	*ft_strdup(const char *s1)
 {
-	unsigned char *ptr1;
-	unsigned char *ptr2;
+	char			*p;
+	char			*str;
+	unsigned char	*ptr;
 
-	ptr1 = (unsigned char *)dst;
-	ptr2 = (unsigned char *)src;
-	if (ptr1 < ptr2)
-		while (len > 0)
+	ptr = (unsigned char *)s1;
+	if ((str = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1)))
+	{
+		p = str;
+		while (*ptr != '\0')
 		{
-			len--;
-			ptr1[len] = ptr2[len];
+			*str = *ptr;
+			ptr++;
+			str++;
 		}
-	else
-		while (len > 0)
-		{
-			*ptr1++ = *ptr2++;
-			len--;
-		}
-	return (dst);
+		*str = '\0';
+		return (p);
+	}
+	return (NULL);
 }
