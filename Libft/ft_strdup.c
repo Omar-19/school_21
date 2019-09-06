@@ -6,13 +6,13 @@
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 15:51:49 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 16:18:50 by fyuko            ###   ########.fr       */
+/*   Updated: 2019/09/06 14:30:12 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-size_t  ft_strlen(const char *s);
+size_t	ft_strlen(const char *s);
 
 char	*ft_strdup(const char *s1)
 {

@@ -6,7 +6,7 @@
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 14:54:50 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 15:11:36 by fyuko            ###   ########.fr       */
+/*   Updated: 2019/09/06 14:28:32 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return ((unsigned char)*str1 - (unsigned char)*str2);
 }
-

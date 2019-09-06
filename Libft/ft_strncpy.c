@@ -6,13 +6,13 @@
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:41:35 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 16:52:31 by fyuko            ###   ########.fr       */
+/*   Updated: 2019/09/06 14:30:56 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-char	*ft_strncpy(char * dst, const char * src, size_t len)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
 	unsigned char	*str;
 	char			*ptr;
@@ -33,6 +33,6 @@ char	*ft_strncpy(char * dst, const char * src, size_t len)
 		str++;
 		len--;
 	}
-		*ptr = '\0';
-		return (dst);
+	*ptr = '\0';
+	return (dst);
 }

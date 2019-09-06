@@ -6,13 +6,13 @@
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 14:42:51 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 14:54:37 by fyuko            ###   ########.fr       */
+/*   Updated: 2019/09/06 14:27:40 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-void    *ft_memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char *str;
 

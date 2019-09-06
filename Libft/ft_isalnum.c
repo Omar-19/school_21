@@ -6,14 +6,14 @@
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 19:56:25 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 19:59:31 by fyuko            ###   ########.fr       */
+/*   Updated: 2019/09/06 14:26:59 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int     ft_isalpha(int c);
-int     ft_isdigit(int c);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
 
 int		ft_isalnum(int c)
 {
-	return (ft_isalpha(int c) && ft_isdigit(int c));
+	return (ft_isalpha(c) && ft_isdigit(c));
 }
