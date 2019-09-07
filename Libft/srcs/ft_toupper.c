@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 18:20:31 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 18:53:03 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 20:05:55 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/07 11:36:32 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+int		ft_toupper(int c)
 {
-	char *ptr;
-
-	ptr = (char *)s;
-	while (*ptr != '\0')
-	{
-		if (*ptr == c)
-			return (ptr);
-		ptr++;
-	}
-	return (NULL);
+	if (c >= 'a' && c <= 'z')
+		return (c + 'A' - 'a');
+	return (c);
 }

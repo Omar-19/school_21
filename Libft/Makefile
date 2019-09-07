@@ -6,15 +6,16 @@
 #    By: fyuko <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/05 20:39:18 by fyuko             #+#    #+#              #
-#    Updated: 2019/09/06 14:21:28 by fyuko            ###   ########.fr        #
+#    Updated: 2019/09/07 16:44:42 by fyuko            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
+
 all:$(NAME)
 
 $(NAME):
-	@gcc -Wall -Wextra -Werror -c ./srcs/*.c -I./headers/
+	@gcc -Wall -Wextra -Werror -c ./srcs/*.c -I ./includes/
 	@ar rc $(NAME) *.o
 clean:
 	@rm -f *.o

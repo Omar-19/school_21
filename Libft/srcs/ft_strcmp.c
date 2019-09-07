@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 20:59:52 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/04 21:15:53 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 19:35:45 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/07 14:42:01 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_memccpy(void *dst, const void *src, size_t n)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	unsigned char *ptr1;
-	unsigned char *ptr2;
+	unsigned char *str1;
+	unsigned char *str2;
 
-	ptr1 = (unsigned char *)dst;
-	ptr2 = (unsigned char *)src;
-	while (n > 0)
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (*str1 == *str2 && *str1 != '\0')
 	{
-		*ptr1 = *ptr2;
-		ptr1++;
-		ptr2++;
-		n--;
+		str1++;
+		str2++;
 	}
-	*ptr1 = '\0';
-	return (dst);
+	return ((unsigned char)*str1 - (unsigned char)*str2);
 }

@@ -1,27 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 18:40:45 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/04 19:49:15 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 17:27:03 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/07 16:08:55 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	unsigned char *ptr;
+	unsigned char	*p2;
+	char			*str;
+	int				f;
 
-	ptr = (unsigned char *)b;
-	while (len > 0)
+	f = 0;
+	str = s1;
+	p2 = (unsigned char *)s2;
+	while (*str != '\0')
+		str++;
+	while (n > 0 && *p2 != '\0')
 	{
-		*ptr = c;
-		ptr++;
-		len--;
+		if (*p2 == '\0')
+			f = 1;
+		if (f == 0)
+			*str = *p2;
+		else
+			*str = '\0';
+		str++;
+		p2++;
+		n--;
 	}
-	return (b);
+	*str = '\0';
+	return (s1);
 }

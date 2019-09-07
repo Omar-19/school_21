@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/04 19:49:30 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/04 20:22:22 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 19:15:37 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/07 18:18:45 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	unsigned char *ptr;
+	char *str;
+	char *to_find;
+	char *a;
+	char *b;
 
-	ptr = (unsigned char *)s;
-	while (n > 0)
+	str = (char *)haystack;
+	to_find = (char *)needle;
+	if (*str == *to_find && *str == '\0')
+		return (str);
+	while (*str != '\0')
 	{
-		*ptr = '0';
-		ptr++;
-		n--;
+		a = str;
+		b = to_find;
+		while (*a == *b || *to_find == '\0')
+		{
+			a++;
+			b++;
+			if (*b == '\0')
+				return (str);
+		}
+		str++;
 	}
+	return (NULL);
 }

@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 17:27:03 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 17:42:08 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 16:41:35 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/07 13:38:52 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	unsigned char	*p2;
-	char			*str;
-	int				f;
+	size_t i;
 
-	f = 0;
-	str = s1;
-	p2 = (unsigned char *)s2;
-	while (*str != '\0')
-		str++;
-	while (n > 0)
+	i = 0;
+	while (i < len && src[i] != '\0')
 	{
-		if (*p2 == '\0')
-			f = 1;
-		if (f == 0)
-			*str = *p2;
-		else
-			*str = '\0';
-		str++;
-		p2++;
-		n--;
+		dst[i] = src[i];
+		i++;
 	}
-	*str = '\0';
-	return (s1);
+	while (i < len)
+	{
+		dst[i] = '\0';
+		i++;
+	}
+	return (dst);
 }

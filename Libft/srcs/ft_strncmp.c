@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 16:19:25 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/05 16:52:48 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/05 19:47:19 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/07 14:42:37 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dst, const char *src)
-{
-	unsigned char	*str;
-	char			*prt;
+#include "libft.h"
 
-	str = (unsigned char *)src;
-	prt = dst;
-	while (*str != '\0')
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	unsigned char *str1;
+	unsigned char *str2;
+
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	while (*str1 == *str2 && *str1 != '\0' && n > 0)
 	{
-		*prt = *str;
-		prt++;
-		str++;
+		str1++;
+		str2++;
+		n--;
 	}
-	*prt = '\0';
-	return (dst);
+	return ((unsigned char)*str1 - (unsigned char)*str2);
 }

@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 16:41:35 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/06 14:30:56 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/04 20:59:52 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/07 15:37:36 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	unsigned char	*str;
-	char			*ptr;
-	int				f;
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
+	size_t			i;
 
-	f = 0;
-	str = (unsigned char *)src;
-	ptr = dst;
-	while (len > 0)
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	ptr1 = (unsigned char *)dst;
+	ptr2 = (unsigned char *)src;
+	i = 0;
+	while (i < n)
 	{
-		if (*str == '\0')
-			f = 1;
-		if (f == 0)
-			*ptr = *str;
-		else
-			*ptr = '\0';
-		ptr++;
-		str++;
-		len--;
+		ptr1[i] = ptr2[i];
+		if (ptr1[i] == (unsigned char)c)
+			return ((void *)(ptr1 + i + 1));
+		i++;
 	}
-	*ptr = '\0';
-	return (dst);
+	return (NULL);
 }
