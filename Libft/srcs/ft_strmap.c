@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 19:35:45 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/08 15:52:47 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/08 14:24:30 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/08 15:29:21 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+char	*ft_strmap(char const *s, char (*f)(char))
 {
-	unsigned char *str1;
-	unsigned char *str2;
+	int		i;
+	int		max;
+	char	*str;
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (*str1 == *str2 && *str1 != '\0')
+	i = 0;
+	if (s != NULL && f != NULL)
 	{
-		str1++;
-		str2++;
+		max = ft_strlen(s);
+		if (!(str = (char *)malloc(sizeof(char) * max + 1)))
+			return (NULL);
+		while (i < max)
+		{
+			str[i] = (*f)(s[i]);
+			++i;
+		}
+		str[i] = '\0';
+		return (str);
 	}
-	return ((unsigned char)*str1 - (unsigned char)*str2);
+	return (NULL);
 }

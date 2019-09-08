@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 19:35:45 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/08 15:52:47 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/08 16:06:15 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/08 16:44:57 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	unsigned char *str1;
-	unsigned char *str2;
+	char	*str;
+	size_t	i;
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (*str1 == *str2 && *str1 != '\0')
+	if (s != NULL && len != 0)
 	{
-		str1++;
-		str2++;
+		if (!(str = (char *)malloc(sizeof(char) * len + 1)))
+			return (NULL);
+		i = 0;
+		while (i < len)
+		{
+			str[i] = s[start + i];
+			i++;
+		}
+		str[i] = '\0';
+		return (str);
 	}
-	return ((unsigned char)*str1 - (unsigned char)*str2);
+	return (NULL);
 }

@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 19:35:45 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/08 15:52:47 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/08 13:20:27 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/08 13:30:33 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+void	*ft_memalloc(size_t size)
 {
-	unsigned char *str1;
-	unsigned char *str2;
+	void *ptr;
 
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (*str1 == *str2 && *str1 != '\0')
-	{
-		str1++;
-		str2++;
-	}
-	return ((unsigned char)*str1 - (unsigned char)*str2);
+	if (!(ptr = (void *)malloc(size)))
+		return (NULL);
+	ft_bzero(ptr, size);
+	return (ptr);
 }

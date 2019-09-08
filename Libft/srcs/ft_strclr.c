@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 19:35:45 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/08 15:52:47 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/08 14:00:07 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/08 14:13:08 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcmp(const char *s1, const char *s2)
+void	ft_strclr(char *s)
 {
-	unsigned char *str1;
-	unsigned char *str2;
-
-	str1 = (unsigned char *)s1;
-	str2 = (unsigned char *)s2;
-	while (*str1 == *str2 && *str1 != '\0')
+	if (s != NULL)
 	{
-		str1++;
-		str2++;
+		while (*s != '\0')
+		{
+			*s = '\0';
+			++s;
+		}
 	}
-	return ((unsigned char)*str1 - (unsigned char)*str2);
 }
