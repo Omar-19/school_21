@@ -10,67 +10,86 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "libft.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-static void	word_count(char const *s, char c, int *i)
+static int	word_count(char const *s, char c)
 {
-	*i = 0;
-	printf("word count = %d\n", *i);
+	int i;
+
+	i = 0;
+	if (*s == '\0')
+		return (1);
 	while (*s != '\0')
 	{
-		printf("word count = %d\n", *i);
 		while (*s == c)
 			++s;
 		if (*s != '\0')
 		{
-			++(*i);
+			++i;
 			while (*s != c && *s != '\0')
 				++s;
 		}
 	}
-	printf("word count = %d\n", *i);
+	return (i);
 }
-/*
-static void word_length(char const *s, char c, int *j)
+
+static int	word_length(char const *s, char c, int *i)
 {
-	*j = 0;
+	int j;
+
+	j = 0;
+	while (s[*i] == c)
+		++(*i);
+	if (s[*i] != '\0')
+		while (s[*i] != c && s[*i] != '\0')
+		{
+			++j;
+			++(*i);
+		}
+	return (j);
+}
+static void	writing_new_str(char **str, char const *s,char c)
+{
+	int i;
+	int j;
+
+	i = 0;
 	while (*s == c)
 		++s;
-	if (*s != '\0')
+	while (*s != '\0')
+	{
+		j = 0;
 		while (*s != c && *s != '\0')
-		{
-			++(*j);
+			str[i][j++] = *(s++);
+		str[i][j] = '\0';
+		++i;
+		while (*s == c)
 			++s;
-		}
-	printf("word length = %d\n", *j);
+	}
 }
-*/
+
 char		**ft_strsplit(char const *s, char c)
 {
-	int		*i;
-	int		*j;
+	int		i;
 	int		k;
 	char	**str;
 
+	if (s == NULL)
+		return (NULL);
 	k = 0;
-//	word_count(s, c, i);
-//	if (!(str = (char **)malloc(sizeof(char *) * *i + 1)))
-//		return (NULL);
-/*	while (*i > 0)
+	if (word_count(s, c) == 0)
+		return (NULL);
+	if (!(str = (char **)malloc(sizeof(char *) * word_count(s, c) + 1)))
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0')
 	{
-		word_length(s, c, j);
-		if (!(str[k] = (char *)malloc(sizeof(char *) * *j + 1)))
+		if (!(str[k++] = (char *)malloc(sizeof(char *) * word_length(s, c, &i) + 1)))
 			return (NULL);
-		k++;
-		--(*i);
-	}*/
-}
-
-int main()
-{
-	char *s = " aaa bb  cccc        d                 ";
-
-//	ft_strsplit(s, ' ');
+		while (s[i] == c)
+			++i;
+	}
+	str[k] = NULL;
+	writing_new_str(str, s, c);
+	return (str);
 }
