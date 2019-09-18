@@ -23,9 +23,7 @@
     <option name="FILTER_BY_CURRENT_PROJECT" value="true" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
-    <generated>
-      <config projectName="gnl" targetName="gnl" />
-    </generated>
+    <generated />
   </component>
   <component name="CMakeSettings">
     <configurations>
@@ -43,14 +41,14 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="MacroExpansionManager">
     <option name="directoryName" value="WnvJyYbA" />
   </component>
   <component name="ProjectId" id="1Qv1H20SI8m57YuPkwINgAQ4OFX" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C/C++" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -63,13 +61,6 @@
         </RuleState>
       </list>
     </option>
-  </component>
-  <component name="RunManager">
-    <configuration name="gnl" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="gnl" TARGET_NAME="gnl" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="gnl" RUN_TARGET_NAME="gnl">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -84,7 +75,11 @@
       <workItem from="1568636165712" duration="2627000" />
       <workItem from="1568643565587" duration="5647000" />
       <workItem from="1568711038601" duration="11647000" />
-      <workItem from="1568730751008" duration="2501000" />
+      <workItem from="1568730751008" duration="2728000" />
+      <workItem from="1568804313712" duration="8000" />
+      <workItem from="1568804427129" duration="6023000" />
+      <workItem from="1568817192577" duration="2012000" />
+      <workItem from="1568819658489" duration="4944000" />
     </task>
     <servers />
   </component>
