@@ -65,7 +65,7 @@ int		ft_buf_overwrite(t_list **ptr, char **line)
 		return (-1);
 	//*line = ft_strnew(tmp - (char *)(*ptr)->content + 1);
 	//*line = ft_strncpy(*line, (*ptr)->content, tmp - (char *)(*ptr)->content);
-	printf("len1 = %d\n", len);
+	//printf("len1 = %d\n", len);
 	//printf("ptr->c4 = %s\n", (*ptr)->content);
 	//printf("a4 = %p\n", a);
 	*line = ft_strncpy(*line, (*ptr)->content, len);
@@ -82,7 +82,7 @@ int		ft_buf_overwrite(t_list **ptr, char **line)
 		//free((*ptr)->content);
 		//(*ptr)->content = ft_strnew(1);
 	}
-	//printf("ptr->c(f) = %d\n", *((char *)(*ptr)->content));
+	//printf("ptr->c(f) = %d ? == %d\n", *((char *)(*ptr)->content), '\n');
 	//*((char *)((*ptr)->content + len)) = '\0';
 	//printf("len = %d\n", len);
 	/*if (num_read == BUFF_SIZE)
@@ -139,8 +139,8 @@ int		ft_read(t_list **ptr, char **line)
 		//printf("num_read = %d\n", num_read);
 	}
 	//printf("*((char *)(*ptr)->content) = %d == %d\n", *((char *)(*ptr)->content), '\0');
-	if ((*((char *)(*ptr)->content) == '\0' || 
-		*((char *)(*ptr)->content) == 10))
+	if (*((char *)(*ptr)->content) == '\0')// || 
+		//*((char *)(*ptr)->content) == 10))
 		return (0);
 	return (ft_buf_overwrite(ptr, line));
 }
@@ -182,7 +182,7 @@ int		get_next_line(const int fd, char **line)
 		ft_clean(&head, fd, line);
 	return (i);
 }
-
+/*
 int main(int argc, char **argv)
 {
 	int fd;
@@ -202,7 +202,7 @@ int main(int argc, char **argv)
 	printf("%s\n", str);
 	free(str);
 	//printf("%d ? == %d\n", str[0], '\0');
-}
+}*/
 	//printf("%s\n", str);
 	/*fd1 = open(argv[1], O_RDONLY);
 	fd2 = open(argv[2], O_RDONLY);
