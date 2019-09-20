@@ -27,5 +27,6 @@ char	*ft_strnew(size_t size)
 		ptr[i] = '\0';
 		++i;
 	}
+	ptr[i] = '\0';
 	return (ptr);
 }
