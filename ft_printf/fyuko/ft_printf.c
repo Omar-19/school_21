@@ -1,5 +1,6 @@
 #include "header.h"
-
+#include <stdio.h>
+/*
 int		ft_write(const char *str, const size_t num)
 {
 	write(1, str, num);
@@ -11,47 +12,23 @@ int		ft_repeat(const char c, int num)
 	int i;
 
 	i = 0;
-	while (i < len)
+	while (i < num)
 	{
 		ft_write(&c, 1);
 		++i;
 	}
 	return (i);
 }
-
+*/
+/*
 int		get_arg(const char *str, size_t num, int val, va_list elem)
 {
 	if (*str == '%' && val)
 		//
 	return (ft_write(str, num));
 }
-
-int		ft_is_conversion(const char c)
-{
-	return (!(pf_strchr("sSpdDioOuUxXcClL%", c) == NULL));
-}
-
-int		ft_is_flag(const char c)
-{
-	return (!(pf_strchr("#0-+' ", c) == NULL));
-}
-
-int		ft_is_precision(const char c)
-{
-	return (!(pf_strchr("*.", c) == NULL));
-}
-
-int		ft_is_num(const char c)
-{
-	return (c >= '0' && c <= '9')
-}
-
-int			ft_is_valid_param(const char c)
-{
-	return (ft_is_conversion(c) || ft_is_flag(c) ||
-			ft_is_num(c) || ft_is_precision(c));
-}
-
+*/
+/*
 int		check_prc(const char *str, size_t *i, int *val)
 {
 	if (!str[*i])
@@ -60,16 +37,16 @@ int		check_prc(const char *str, size_t *i, int *val)
 	while (str[*i] && ft_is_valid_param(str[*i]) && !ft_is_conversion(str[*i]))
 		(*i)++;
 		//символ:
-	if ((*valid = str[*i] && ft_is_valid_param(str[*i])))
+	if ((*val = str[*i] && ft_is_valid_param(str[*i])))
 		(*i)++;
 	else
 		return (1);
 	return (0);
 }
-
+*/
 // подсчитывание числа выведеннных символов
 // -> get
-
+/*
 int		print_elem(const char *str, va_list elem)
 {
 	size_t	i;
@@ -83,7 +60,7 @@ int		print_elem(const char *str, va_list elem)
 	{
 		begin = i;
 		val = 0;
-		if (str[i] == %)
+		if (str[i] == '%')
 		{
 			i++;
 			if (check_prc(str, &i, &val))
@@ -93,9 +70,59 @@ int		print_elem(const char *str, va_list elem)
 			while (str[i] && str[i] != '%')
 				++i;
 		// get_arg - 
-		count += get_arg(str + begin, i - begin, val, elem)
+		count += get_arg(str + begin, i - begin, val, elem);
 	}
 	return (count);
+}*/
+
+
+int		print_elem(const char *format, va_list elem)
+{
+	t_string	*head;
+	t_string	*ptr;
+	int			i;
+	int			f;
+
+	i = 0;
+	f = 0;
+	head = ft_lst_new(format);
+	// check
+	ptr = head;
+	//printf("header = %s\n", header->str);
+	while(format[i])
+	{
+		//printf("format[%d] = %c\n", i, format[i]);
+		if (format[i] == '%')
+		{
+			ptr->len = format + i - ptr->str;
+			//++i;
+			if (ptr->len != 0)
+				ptr = ft_lst_push_back(format + ++i, ptr);
+			else
+				ptr->str = format + ++i;
+			if (format[i] == '%')
+				++i;
+			else
+			{
+				while(ft_is_valid_param(format[i]))
+					++i;
+				ptr->len = format + i - ptr->str;
+				--i;
+				ptr = ft_lst_push_back(format + ++i, ptr);
+			}
+			continue;
+		}
+		++i;
+	}
+	ptr->len = format + i - ptr->str;
+	ptr = head;
+	while(head)
+	{
+		printf("header = %s, len = %zu\n", head->str, head->len);
+		head = head->next;
+	}
+	ft_lst_delet(&head);
+	return (0);
 }
 
 int		ft_printf(const char *format, ...)
@@ -107,4 +134,10 @@ int		ft_printf(const char *format, ...)
 	result = print_elem(format, elem);
 	va_end(elem);
 	return (result);
+}
+
+int main()
+{
+	ft_printf("cmbc%dcm%%", 7);
+	return (0);
 }
