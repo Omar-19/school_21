@@ -106,8 +106,8 @@ int		print_elem(const char *format, va_list elem)
 			{
 				while(ft_is_valid_param(format[i]))
 					++i;
-				ptr->len = format + i - ptr->str;
-				--i;
+				ptr->len = format + i-- - ptr->str;
+				ptr->flag = 1;
 				ptr = ft_lst_push_back(format + ++i, ptr);
 			}
 			continue;
@@ -118,7 +118,7 @@ int		print_elem(const char *format, va_list elem)
 	ptr = head;
 	while(head)
 	{
-		printf("header = %s, len = %zu\n", head->str, head->len);
+		printf("header = %s, len = %zu, f = %d\n", head->str, head->len, head->flag);
 		head = head->next;
 	}
 	ft_lst_delet(&head);
@@ -138,6 +138,6 @@ int		ft_printf(const char *format, ...)
 
 int main()
 {
-	ft_printf("cmbc%dcm%%", 7);
+	ft_printf("%cmbc%dcm%%", 7);
 	return (0);
 }

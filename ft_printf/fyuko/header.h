@@ -11,6 +11,7 @@ typedef struct		s_string
 {
 	const char		*str;
 	size_t			len;
+	int				flag;
     struct s_string	*next;
 }					t_string;
 
