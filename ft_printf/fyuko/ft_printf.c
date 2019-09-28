@@ -88,14 +88,11 @@ int		print_elem(const char *format, va_list elem)
 	head = ft_lst_new(format);
 	// check
 	ptr = head;
-	//printf("header = %s\n", header->str);
 	while(format[i])
 	{
-		//printf("format[%d] = %c\n", i, format[i]);
 		if (format[i] == '%')
 		{
 			ptr->len = format + i - ptr->str;
-			//++i;
 			if (ptr->len != 0)
 				ptr = ft_lst_push_back(format + ++i, ptr);
 			else
@@ -104,9 +101,9 @@ int		print_elem(const char *format, va_list elem)
 				++i;
 			else
 			{
-				while(ft_is_valid_param(format[i]))
+				while(!(ft_is_conversion(format[i])))
 					++i;
-				ptr->len = format + i-- - ptr->str;
+				ptr->len = format + i + 1 - ptr->str;
 				ptr->flag = 1;
 				ptr = ft_lst_push_back(format + ++i, ptr);
 			}

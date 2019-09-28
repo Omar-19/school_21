@@ -17,7 +17,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-static inline int		ft_is_conversion(const char c)
+int		ft_is_conversion(const char c)
 {
 	return (!(ft_strchr("diuoxXfFeEgGaAcsSpn", c) == NULL));
 }
