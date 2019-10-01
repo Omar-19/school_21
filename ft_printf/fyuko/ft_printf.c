@@ -80,38 +80,42 @@ int		print_elem(const char *format, va_list elem)
 {
 	t_string	*head;
 	t_string	*ptr;
+	const char	*str;
 	int			i;
 	int			f;
 
+	str = format;
 	i = 0;
 	f = 0;
-	head = ft_lst_new(format);
+	head = ft_lst_new(str);
 	// check
 	ptr = head;
-	while(format[i])
+	while(str[i])
 	{
-		if (format[i] == '%')
+		if (str[i] == '%')
 		{
-			ptr->len = format + i - ptr->str;
+			ptr->len = str + i - ptr->str;
 			if (ptr->len != 0)
-				ptr = ft_lst_push_back(format + ++i, ptr);
+				ptr = ft_lst_push_back(str + ++i, ptr);
 			else
-				ptr->str = format + ++i;
-			if (format[i] == '%')
+				ptr->str = str + ++i;
+			if (str[i] == '%')
 				++i;
 			else
 			{
-				while(!(ft_is_conversion(format[i])))
+				while(!(ft_is_conversion(str[i])))
 					++i;
-				ptr->len = format + i + 1 - ptr->str;
+				ptr->len = str + i + 1 - ptr->str;
 				ptr->flag = 1;
-				ptr = ft_lst_push_back(format + ++i, ptr);
+				if (!ft_paramater_processing(ptr, format))
+					ft_error(&head);
+				ptr = ft_lst_push_back(str + ++i, ptr);
 			}
 			continue;
 		}
 		++i;
 	}
-	ptr->len = format + i - ptr->str;
+	ptr->len = str + i - ptr->str;
 	ptr = head;
 	while(head)
 	{

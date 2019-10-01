@@ -1,5 +1,5 @@
 #include "header.h"
-
+/*
 static int	ft_len(int n)
 {
 	int i;
@@ -38,12 +38,15 @@ char		*ft_nitoa(int n)
 	if (flag == 1)
 		s[--len] = '-';
 	return (s);
+}*/
+
+int		*ft_param_processing(t_string *str, const char format)
+{
+	
+	return (1);
 }
 
-char	*param_processing(t_string *str, void *elem)
-{
-	return (0);
-}
+//va_arg
 
 /*
 static int	ft_len(int n)

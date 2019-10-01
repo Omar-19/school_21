@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
- 
+ /*
 int sum(int n, ...)
 {
 	int result = 0;
@@ -18,12 +18,12 @@ int sum(int n, ...)
 	va_end(factor); // завершаем обработку параметров
 	return result;
 }
- 
+ */
 int main(void)
 {	
-	printf("%d \n", sum(4, 1, 2, 3, 4));
-
-	printf("%d \n", sum(5, 12, 21, 13, 4, 5));
+	//printf("%d \n", sum(4, 1, 2, 3, 4));
+	printf("%X", 10);
+	//printf("%d \n", sum(5, 12, 21, 13, 4, 5));
 	return 0;
 }
 

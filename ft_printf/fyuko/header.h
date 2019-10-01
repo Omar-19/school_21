@@ -15,6 +15,23 @@ typedef struct		s_string
     struct s_string	*next;
 }					t_string;
 
+typedef struct 		s_type
+{
+	//fFeEgGaASn
+	//dxXoi
+	int				type_int;
+	//u
+	unsigned int	type_un_int;
+	//c
+	char			type_char;
+	//p
+	void			*type_ptr;
+	//s
+	char			*type_string;
+
+};
+
+int					*ft_param_processing(t_string *str, const char format);
 void				ft_error(t_string **lst);
 char				*ft_nitoa(int n);
 char				*param_processing(t_string *str, void *elem);
