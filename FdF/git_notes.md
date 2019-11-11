@@ -2,7 +2,7 @@
 
 ## man:
 
-### mlx.1
+* ### mlx.1
 #### NAME
        MiniLibX - Simple Graphical Interface Library for students
 
@@ -57,7 +57,7 @@
 
        mlx_pixel_put       : draw inside window
 
-### mlx_loop.1
+* ### mlx_loop.1
 #### NAME
        MiniLibX - Handle events
 
@@ -111,7 +111,7 @@
        When  it  catches an event, the MiniLibX calls the corresponding function
        with fixed parameters:
 
-### mlx_new_image.1
+* ### mlx_new_image.1
 #### NAME
        MiniLibX - Manipulating images
 
@@ -165,7 +165,7 @@
        image needs to be stored in little endian ( endian == 0), or big endian (
        endian == 1).
 
-### mlx_new_window.1
+* ### mlx_new_window.1
 #### NAME
        MiniLibX - Managing windows
 
@@ -202,7 +202,7 @@
 #### SEE ALSO
        mlx(3), mlx_pixel_put(3), mlx_new_image(3), mlx_loop(3)
 
-### mlx_pixel_put.1
+* ### mlx_pixel_put.1
 #### NAME
        MiniLibX - Drawing inside windows
 
