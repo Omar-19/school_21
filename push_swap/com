@@ -1,0 +1,1 @@
+gcc shared/*.c libft/libft/*.c  -I libft/includes/
