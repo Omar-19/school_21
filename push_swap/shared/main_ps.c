@@ -14,31 +14,31 @@ void		ft_clear_stack(t_lst *a)
 
 void	ft_error(t_lst *a, t_lst *b)
 {
-	(a) ? (ft_clear_stack(a)) : 0;
+	// (a) ? (ft_clear_stack(a)) : 0;
 	(b) ? (ft_clear_stack(b)) : 0;
 	write(1, "Error\n", 6);
 	exit(0);
 }
 
-t_lst	*read_stack(char **av, int ac)
+t_lst	*read_stack(char **av, int ac, t_lst *a)
 {
 	t_lst	*head;
 	t_lst	*tmp;
 	size_t	i;
 
 	i = 1;
-	head = read_str_stack(av[i++]);
+	head = read_str_stack(av[i++], a);
 	tmp = head;
 	while(i < ac)
 	{
 		while (tmp->next)
 			tmp = tmp->next;
-		tmp->next = read_str_stack(av[i++]);
+		tmp->next = read_str_stack(av[i++], a);
 	}
 	return (head);
 }
 
-t_lst	*read_str_stack(char *av)
+t_lst	*read_str_stack(char *av, t_lst *a)
 {
 	t_lst	*head;
 	size_t	i;
@@ -48,31 +48,34 @@ t_lst	*read_str_stack(char *av)
 	i = 1;
 	if (!(s = ft_strchr(av, ' ')))
 	{
-		(!(head = creat_el(av))) ? ft_error(head, NULL) : 0;
+		(!(head = creat_el(av, a))) ? ft_error(head, NULL) : 0;
 		return(head);
 	}
-	(!(head = creat_el(av))) ? ft_error(head, NULL) : 0;
+	(!(head = creat_el(av, a))) ? ft_error(head, NULL) : 0;
 	tmp = head;
 	av = s + 1;
 	s = ft_strchr(av, ' ');
 	while (s)
 	{
-		(!(tmp->next = creat_el(av))) ? ft_error(head, NULL) : 0;
+		(!(tmp->next = creat_el(av, a))) ? ft_error(head, NULL) : 0;
 		av = s + 1;
 		s = ft_strchr(av, ' ');
 		tmp = tmp->next;
 	}
-	tmp->next = creat_el(av);
+	tmp->next = creat_el(av, a);
 	return (head);
 }
 
 void	check_valid_elems(t_lst *a)
 {
-	t_lst *tmp;
+	t_lst	*tmp;
+	int		i;
 
+	i = 0;
 	(!a) ? (ft_error(a, NULL)) : 0;
 	while (a->next)
 	{
+		a->pos = i++;
 		// (a->num > 2147483647 || a->num < -2147483648) ? (ft_error(a, NULL)) : 0; --- поправить проверку
 		tmp = a->next;
 		while (tmp)
@@ -82,6 +85,7 @@ void	check_valid_elems(t_lst *a)
 		}
 		a = a->next;
 	}
+	a->pos = i;
 }
 
 
@@ -133,17 +137,17 @@ int main(int ac, char **av)
         return (0);
 	}
 	else if (ac == 2)
-		a = read_str_stack(av[1]);
+		a = read_str_stack(av[1], a);
 	else
-		a = read_stack(av, ac);
+		a = read_stack(av, ac, a);
+	// printf("\n");
+	check_valid_elems(a);
 	b = a;
 	while (b)
 	{
 		printf("num = %lld   pos = %d\n", b->num, b->pos);
 		b = b->next;
 	}
-	printf("\n");
-	check_valid_elems(a);
 	// b = a;
 	// while (b)
 	// {
