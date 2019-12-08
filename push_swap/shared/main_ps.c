@@ -122,6 +122,28 @@ int	is_av_valid(int ac, char **av)
 	return (1);
 }
 
+void	ft_min_sort(t_lst *a)
+{
+	t_lst *ptr;
+
+	ptr = a->next;
+	while (ptr)
+	{
+		if (ptr->num < a->num)
+			break ;
+		a = ptr;
+		ptr = ptr->next;
+	}
+	if (!ptr)
+	{
+		ft_clear_stack(a);
+		exit (0);
+	}
+	while (ptr->next)
+		ptr = ptr->next;
+	printf("pos = %d\n", ptr->pos);
+}
+
 int main(int ac, char **av)
 {
 	t_lst   *a;
@@ -142,7 +164,10 @@ int main(int ac, char **av)
 		a = read_stack(av, ac, a);
 	// printf("\n");
 	check_valid_elems(a);
+	ft_min_sort(a);
 	b = a;
+	
+	printf("\n---------\n");
 	while (b)
 	{
 		printf("num = %lld   pos = %d\n", b->num, b->pos);
