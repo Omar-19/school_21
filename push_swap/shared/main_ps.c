@@ -122,32 +122,80 @@ int	is_av_valid(int ac, char **av)
 	return (1);
 }
 
-void	ft_min_sort(t_lst *a)
+void	ft_sort_three(t_lst *a)
 {
-	t_lst *ptr;
+	t_lst *b;
 
-	ptr = a->next;
-	while (ptr)
+	if (a->num < a->next->num && a->num > a->next->next->num)
 	{
-		if (ptr->num < a->num)
-			break ;
-		a = ptr;
-		ptr = ptr->next;
+		rra(a, 1);
 	}
+	else if (a->num > a->next->next->num && a->next->num < a->next->next->num)
+		ra(a, 1);
+	else
+	{
+		sa(a, 1);
+		if (a->num < a->next->num && a->num > a->next->next->num)
+			rra(a, 1);
+		else if (a->num > a->next->next->num && a->next->num < a->next->next->num)
+			ra(a, 1);
+		else
+			return ;
+	}
+}
+
+void	ft_min_sort(t_lst *a, int i)
+{
+	if (i == 0)
+		exit(0);
+	else if (i == 1)
+		sa(a, 1);
+	else
+		ft_sort_three(a);
+}
+
+void	ft_create_b(t_lst **a, t_lst **b, int n)
+{
+	while (n-- >= 3)
+		pb(a, b, 1);
+	ft_sort_three(*a);
+}
+
+void	check(t_lst *a)
+{
+	while (a->next)
+	{
+		if (a->num > a->next->num)
+			return ;
+		a = a->next;
+	}
+	exit (0);
+}
+
+void	is_sort(t_lst **a, t_lst **b)
+{
+	t_lst	*ptr;
+	t_lst	*head;
+
+	head = *a;
+	ptr = (*a)->next;
+	check(*a);
 	if (!ptr)
 	{
-		ft_clear_stack(a);
+		ft_clear_stack((*a));
 		exit (0);
 	}
 	while (ptr->next)
 		ptr = ptr->next;
-	printf("pos = %d\n", ptr->pos);
+	// printf("pos = %d\n", ptr->pos);
+	(ptr->pos < 3) ? (ft_min_sort(head, ptr->pos)) : (ft_create_b(a, b, ptr->pos));
 }
 
 int main(int ac, char **av)
 {
 	t_lst   *a;
 	t_lst   *b;
+	t_lst   *c;
 	int		f;
 
 	a = NULL;
@@ -164,15 +212,23 @@ int main(int ac, char **av)
 		a = read_stack(av, ac, a);
 	// printf("\n");
 	check_valid_elems(a);
-	ft_min_sort(a);
-	b = a;
-	
-	printf("\n---------\n");
-	while (b)
+	is_sort(&a, &b);
+	c = a;
+	printf("-----A-----\n");
+	while (c)
 	{
-		printf("num = %lld   pos = %d\n", b->num, b->pos);
-		b = b->next;
+		printf("num = %lld\n", c->num);
+		c = c->next;
 	}
+	printf("-----------\n");
+	c = b;
+	printf("-----B-----\n");
+	while (c)
+	{
+		printf("num = %lld\n", c->num);
+		c = c->next;
+	}
+	printf("-----------\n");
 	// b = a;
 	// while (b)
 	// {
