@@ -51,6 +51,14 @@ void		ft_clear_stack(t_lst *a);
 void		ft_error(t_lst *a, t_lst *b);
 t_lst		*read_stack(char **av, int ac, t_lst *a);
 t_lst		*read_str_stack(char *av, t_lst *a);
+void		check_valid_elems(t_lst *a);
+int			is_str_valid(char *av);
+int			is_av_valid(int ac, char **av);
+void		ft_sort_three(t_lst *a);
+void		ft_min_sort(t_lst *a, int i);
+void		ft_create_b(t_lst **a, t_lst **b, int n);
+void		check(t_lst *a);
+void		is_sort(t_lst **a, t_lst **b);
 t_lst		*creat_el(char *av, t_lst *a);
 
 #endif
