@@ -54,15 +54,15 @@ int	is_av_valid(int ac, char **av)
 	return (1);
 }
 
-void	check(t_lst *a)
+int		check(t_lst *a)
 {
 	while (a->next)
 	{
 		if (a->num > a->next->num)
-			return ;
+			return (0);
 		a = a->next;
 	}
-	exit (0);
+	return (1);
 }
 
 void	is_sort(t_lst **a, t_lst **b)
@@ -72,7 +72,8 @@ void	is_sort(t_lst **a, t_lst **b)
 
 	head = *a;
 	ptr = (*a)->next;
-	check(*a);
+	if (check(*a))
+		exit (0);
 	if (!ptr)
 	{
 		ft_clear_stack((*a));

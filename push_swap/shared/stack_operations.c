@@ -12,6 +12,19 @@ void		ft_clear_stack(t_lst *a)
 	}
 }
 
+int		stack_len(t_lst *head)
+{
+	int num;
+
+	num = 0;
+	while (head)
+	{
+		++num;
+		head = head->next;
+	}
+	return (num);
+}
+
 void	ft_error(t_lst *a, t_lst *b)
 {
 	(a) ? (ft_clear_stack(a)) : 0;

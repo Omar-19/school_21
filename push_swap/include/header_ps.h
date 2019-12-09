@@ -17,9 +17,23 @@ typedef struct		s_lst
 	int				pos;
 }					t_lst;
 
-typedef struct		s_str
+typedef struct		s_insert
 {
-	int				suml;
+	int	len_a;
+	int	len_b;
+	int	n_ra;
+	int	n_rb;
+	int	n_rr;
+	int	n_rra;
+	int	n_rrb;
+	int n_rrr;
+	int	n_up;
+	int	n_down;
+	int	pos_b;
+	int num_in_a;
+	int min;
+	int pos_min;
+	// int				suml;
 	// int				fa;
 	// int				fb;
 	// int				ta;
@@ -34,7 +48,7 @@ typedef struct		s_str
 	// int				um;
 	// int				min_num1;
 	// int				pos1;
-}					t_str;
+}					t_insert;
 
 void		sa(t_lst *a, int i);
 void		sb(t_lst *b, int i);
@@ -57,8 +71,13 @@ int			is_av_valid(int ac, char **av);
 void		ft_sort_three(t_lst *a);
 void		ft_min_sort(t_lst *a, int i);
 void		ft_create_b(t_lst **a, t_lst **b, int n);
-void		check(t_lst *a);
+int			check(t_lst *a);
+int			stack_len(t_lst *head);
 void		is_sort(t_lst **a, t_lst **b);
 t_lst		*creat_el(char *av, t_lst *a);
+void		zeroing(t_lst *a, t_lst *b, t_insert *tmp);
+void		min_step(t_lst *a, t_lst *b, t_insert *tmp);
+void		position_in_a(t_lst *b, t_insert *tmp, t_lst *ptr);
+void		insertion_sort(t_lst **a, t_lst **b, t_insert tmp);
 
 #endif

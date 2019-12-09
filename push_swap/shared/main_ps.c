@@ -2,9 +2,10 @@
 
 int main(int ac, char **av)
 {
-	t_lst   *a;
-	t_lst   *b;
-	t_lst   *c;
+	t_lst		*a;
+	t_lst		*b;
+	t_lst		*c;
+	t_insert	tmp;
 	int		f;
 
 	a = NULL;
@@ -23,20 +24,21 @@ int main(int ac, char **av)
 	check_valid_elems(a);
 	is_sort(&a, &b);
 	c = a;
-	printf("-----A-----\n");
-	while (c)
-	{
-		printf("num = %lld\n", c->num);
-		c = c->next;
-	}
-	printf("-----------\n");
-	c = b;
-	printf("-----B-----\n");
-	while (c)
-	{
-		printf("num = %lld\n", c->num);
-		c = c->next;
-	}
-	printf("-----------\n");
+	insertion_sort(&a, &b, tmp);
+	// printf("-----A-----\n");
+	// while (c)
+	// {
+	// 	printf("num = %lld\n", c->num);
+	// 	c = c->next;
+	// }
+	// printf("-----------\n");
+	// c = b;
+	// printf("-----B-----\n");
+	// while (c)
+	// {
+	// 	printf("num = %lld\n", c->num);
+	// 	c = c->next;
+	// }
+	// printf("-----------\n");
 	return (0);
 }
