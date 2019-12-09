@@ -27,7 +27,7 @@ typedef struct		s_insert
 	int	n_rra;
 	int	n_rrb;
 	int n_rrr;
-	int	n_up;
+	int	n_up; //
 	int	n_down;
 	int	pos_b;
 	int num_in_a;
