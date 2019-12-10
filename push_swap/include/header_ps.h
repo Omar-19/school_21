@@ -39,21 +39,6 @@ typedef struct		s_insert
 	int pos_b;
 	int min;
 	int pos_min;
-	// int				suml;
-	// int				fa;
-	// int				fb;
-	// int				ta;
-	// int				tb;
-	// int				len_s;
-	// int				max_div;
-	// int				debug;
-	// int				col;
-	// int				f;
-	// int				big;
-	// int				max1;
-	// int				um;
-	// int				min_num1;
-	// int				pos1;
 }					t_insert;
 
 void		sa(t_lst *a, int i);
