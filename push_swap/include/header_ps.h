@@ -17,6 +17,14 @@ typedef struct		s_lst
 	int				pos;
 }					t_lst;
 
+typedef struct		s_res
+{
+	int rabr;
+	int rrabr;
+	int rarrb;
+	int rrarb;
+}					t_res;
+
 typedef struct		s_insert
 {
 	int	len_a;
@@ -27,10 +35,8 @@ typedef struct		s_insert
 	int	n_rra;
 	int	n_rrb;
 	int n_rrr;
-	int	n_up; //
-	int	n_down;
-	int	pos_b;
 	int num_in_a;
+	int pos_b;
 	int min;
 	int pos_min;
 	// int				suml;
@@ -79,5 +85,6 @@ void		zeroing(t_lst *a, t_lst *b, t_insert *tmp);
 void		min_step(t_lst *a, t_lst *b, t_insert *tmp);
 void		position_in_a(t_lst *b, t_insert *tmp, t_lst *ptr);
 void		insertion_sort(t_lst **a, t_lst **b, t_insert tmp);
+int			min(t_res res);
 
 #endif
