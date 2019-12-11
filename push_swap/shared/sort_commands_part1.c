@@ -5,7 +5,7 @@ void	sa(t_lst *a, int i)
 	t_lst			*el;
 	long long int	h;
 
-	if (!a)
+	if (!a || !a->next)
 		return ;
 	el = a->next;
 	if (!a)

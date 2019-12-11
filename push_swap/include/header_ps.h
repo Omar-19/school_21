@@ -54,6 +54,7 @@ void		rrb(t_lst *b, int i);
 void		rrr(t_lst *a, t_lst *b, int i);
 void		ft_clear_stack(t_lst *a);
 void		ft_error(t_lst *a, t_lst *b);
+int			get_next_line(const int fd, char **line);
 t_lst		*read_stack(char **av, int ac, t_lst *a);
 t_lst		*read_str_stack(char *av, t_lst *a);
 void		check_valid_elems(t_lst *a);

@@ -11,11 +11,10 @@ int main(int ac, char **av)
 	a = NULL;
 	b = NULL;
 	f = 0;
-	if (ac == 1 || !is_av_valid(ac, av))
-	{
-		ft_error(NULL, NULL);
+	if (ac == 1)
         return (0);
-	}
+	if (!is_av_valid(ac, av))
+		ft_error(NULL, NULL);
 	else if (ac == 2)
 		a = read_str_stack(av[1], a);
 	else
