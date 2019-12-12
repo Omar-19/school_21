@@ -30,9 +30,14 @@ void	ft_sort_three(t_lst *a)
 void	ft_min_sort(t_lst *a, int i)
 {
 	if (i == 0)
+	{
+		ft_clear_stack(a);
 		exit(0);
+	}
 	else if (i == 1)
 		sa(a, 1);
 	else
 		ft_sort_three(a);
+	ft_clear_stack(a);
+	exit(0);
 }

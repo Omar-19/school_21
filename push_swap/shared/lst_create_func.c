@@ -59,8 +59,10 @@ t_lst	*creat_el(char *av, t_lst *a)
 	}
 	else
 	{
+		// ft_printf( "");
 		// printf("S\n");
-		if (ft_strcmp(av, str))//&& ((*str == '+') && ft_strcmp(av, str + 1)))
+		// printf("AV = |%s|    STR = |%s|\n", av + 1, str);
+		if (ft_strcmp(av, str))
 		{
 			// printf("S\n");
 			return (ft_del_elem(&str, tmp));

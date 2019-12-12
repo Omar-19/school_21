@@ -7,7 +7,7 @@
 # include <limits.h>
 # include "../libft/includes/header.h" // 4 1 6 2 7 3 pb ra sa pa rb rrb rra
 # include "../libft/libft/libft.h"
-# define BUFF_SIZE 1
+# define BUFF_SIZE 2
 # define ESC "\x1b"
 
 typedef struct		s_lst

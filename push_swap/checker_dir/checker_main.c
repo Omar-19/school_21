@@ -63,7 +63,10 @@ void		do_inst(t_lst **a, t_lst **b, char *line)
 	else if (!ft_strcmp("rrr\0" ,line))
 		rrr(*a, *b, 0);
 	else
+	{
+		free(line);
 		ft_error(*a, *b);
+	}
 }
 
 void		read_inst(t_lst **a, t_lst **b)
@@ -71,7 +74,7 @@ void		read_inst(t_lst **a, t_lst **b)
 	char	*line;
 
 	line = NULL;
-	while (get_next_line(0, &line))//get_next_line(const int fd, char **line)
+	while (get_next_line(0, &line))
 	{
 		if (*line == '\0')
 			break ;
