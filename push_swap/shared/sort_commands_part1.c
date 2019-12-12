@@ -34,6 +34,8 @@ void	ra(t_lst *a, int i)
 	long long int	el;
 	t_lst			*tmp;
 
+	if (!a || !a->next)
+		return ;
 	el = a->num;
 	tmp = a->next;
 	while (tmp)

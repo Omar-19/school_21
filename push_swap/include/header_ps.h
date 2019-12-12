@@ -5,7 +5,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <limits.h>
-# include "../libft/includes/header.h"
+# include "../libft/includes/header.h" // 4 1 6 2 7 3 pb ra sa pa rb rrb rra
 # include "../libft/libft/libft.h"
 # define BUFF_SIZE 7
 # define ESC "\x1b"

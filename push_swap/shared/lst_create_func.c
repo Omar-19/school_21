@@ -42,22 +42,30 @@ t_lst	*creat_el(char *av, t_lst *a)
 	char	*str;
 
 	p = NULL;
+	// printf("S\n");
 	if (!(tmp = (t_lst*)malloc(sizeof(t_lst))))
 		return (NULL);
 	tmp->num = ft_atoi_long(av);
 	// printf("->num = %lld\n", tmp->num);
 	(tmp->num > 2147483647 || tmp->num < -2147483648) ? (ft_error(a, NULL)) : 0;
 	str = ft_itoa(tmp->num);
+	// printf("S\n");
 	// printf("s === %s\n", str);
 	if ((p = ft_strchr(av, ' ')))
 	{
+		// printf("S\n");
 		if (ft_strncmp(av, str, p - av))
 			return (ft_del_elem(&str, tmp));
 	}
 	else
 	{
-		if (ft_strcmp(av, str))
+		// printf("S\n");
+		if (ft_strcmp(av, str))//&& ((*str == '+') && ft_strcmp(av, str + 1)))
+		{
+			// printf("S\n");
 			return (ft_del_elem(&str, tmp));
+		}
+		// printf("S\n");
 	}
 	free(str);
 	tmp->next = NULL;

@@ -116,7 +116,7 @@ void	min_step(t_lst *a, t_lst *b, t_insert *tmp)
 	// printf("%d %d %d %d", res.rabr, res.rarrb);
 }
 
-void	do_rarrb(t_lst *a, t_lst *b, t_res res, t_insert tmp)
+void	do_rarrb(t_lst *a, t_lst *b, t_insert tmp)
 {
 	while (tmp.n_ra--)
 		ra(a, 1);
@@ -124,7 +124,7 @@ void	do_rarrb(t_lst *a, t_lst *b, t_res res, t_insert tmp)
 		rrb(b, 1);
 }
 
-void	do_rrarb(t_lst *a, t_lst *b, t_res res, t_insert tmp)
+void	do_rrarb(t_lst *a, t_lst *b, t_insert tmp)
 {
 	while (tmp.n_rra--)
 		rra(a, 1);
@@ -132,7 +132,7 @@ void	do_rrarb(t_lst *a, t_lst *b, t_res res, t_insert tmp)
 		rb(b, 1);
 }
 
-void	do_rabr(t_lst *a, t_lst *b, t_res res, t_insert tmp)
+void	do_rabr(t_lst *a, t_lst *b, t_insert tmp)
 {
 	while (tmp.n_rr--)
 		rr(a, b, 1);
@@ -142,7 +142,7 @@ void	do_rabr(t_lst *a, t_lst *b, t_res res, t_insert tmp)
 		rb(b, 1);
 }
 
-void	do_rrabr(t_lst *a, t_lst *b, t_res res, t_insert tmp)
+void	do_rrabr(t_lst *a, t_lst *b, t_insert tmp)
 {
 	while (tmp.n_rrr--)
 		rrr(a, b, 1);
@@ -162,17 +162,17 @@ void	insert(t_lst **a, t_lst **b, t_insert *tmp)
 		c = c->next;
 	count_n_oper(*a, c, tmp, &res);
 	if (res.rarrb == tmp->min)
-		do_rarrb(*a, *b, res, *tmp);
+		do_rarrb(*a, *b, *tmp);
 	else if (res.rrarb == tmp->min)
-		do_rrarb(*a, *b, res, *tmp);
+		do_rrarb(*a, *b, *tmp);
 	else
 	{
 		_rr_(&(tmp->n_ra), &(tmp->n_rb), &(tmp->n_rr));
 		_rr_(&(tmp->n_rra), &(tmp->n_rrb), &(tmp->n_rrr));
 		if ((res.rabr = tmp->n_ra + tmp->n_rb + tmp->n_rr) == tmp->min)
-			do_rabr(*a, *b, res, *tmp);
+			do_rabr(*a, *b, *tmp);
 		else if ((res.rrabr = tmp->n_rra + tmp->n_rrb + tmp->n_rrr) == tmp->min)
-			do_rrabr(*a, *b, res, *tmp);
+			do_rrabr(*a, *b, *tmp);
 		else
 			printf("----------------------((((-----------------\n");
 	}
@@ -230,7 +230,7 @@ void	final_r(t_lst **a)
 
 void	insertion_sort(t_lst **a, t_lst **b, t_insert tmp)
 {
-	t_lst *c;
+	// t_lst *c;
 
 	zeroing(*a, *b, &tmp);
 	// printf("-----A-----\n");
@@ -288,14 +288,14 @@ void	insertion_sort(t_lst **a, t_lst **b, t_insert tmp)
 	// insert(a, b, &tmp);
 	// printf("MIN = %d    POS_MIN = %d va = %d\n", tmp.min, tmp.pos_min, tmp.num_in_a);
 
-	printf("-----A-----\n");
-	c = *a;
-	while (c)
-	{
-		printf("%d ||| %lld\n", c->pos, c->num);
-		c = c->next;
-	}
-	printf("-----------\n");
+	// printf("-----A-----\n");
+	// c = *a;
+	// while (c)
+	// {
+	// 	printf("%d ||| %lld\n", c->pos, c->num);
+	// 	c = c->next;
+	// }
+	// printf("-----------\n");
 	// c = *b;
 	// printf("-----B-----\n");
 	// while (c)

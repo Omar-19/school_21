@@ -28,7 +28,7 @@ int	is_str_valid(char *av)
 	i = 0;
 	while(av[i] != '\0')
 	{
-		if (av[i] == '-')
+		if (av[i] == '-' || av[i] == '+')
 			++i;
 		if (av[i] > '9' || av[i] < '0')
 			return (0);

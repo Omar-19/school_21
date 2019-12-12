@@ -7,6 +7,8 @@ void	rra(t_lst *a, int i)
 	long long int	el;
 	long long int	s;
 
+	if (!a || !a->next)
+		return ;
 	head = a;
 	tmp = a->next;
 	s = a->num;

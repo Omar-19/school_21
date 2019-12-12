@@ -29,7 +29,7 @@ void	ft_error(t_lst *a, t_lst *b)
 {
 	(a) ? (ft_clear_stack(a)) : 0;
 	(b) ? (ft_clear_stack(b)) : 0;
-	write(1, "Error\n", 6);
+	write(2, "Error\n", 6);
 	exit(0);
 }
 
@@ -42,7 +42,7 @@ t_lst	*read_stack(char **av, int ac, t_lst *a)
 	i = 1;
 	head = read_str_stack(av[i++], a);
 	tmp = head;
-	while(i < ac)
+	while(i < (size_t)ac)
 	{
 		while (tmp->next)
 			tmp = tmp->next;
@@ -59,10 +59,13 @@ t_lst	*read_str_stack(char *av, t_lst *a)
 	t_lst	*tmp;
 
 	i = 1;
+	// printf("S\n");
 	if (!(s = ft_strchr(av, ' ')))
 	{
+		// printf("S\n");
 		(!(head = creat_el(av, a))) ? ft_error(head, NULL) : 0;
 		return(head);
+		// printf("S\n");
 	}
 	(!(head = creat_el(av, a))) ? ft_error(head, NULL) : 0;
 	tmp = head;
