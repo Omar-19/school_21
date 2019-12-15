@@ -69,39 +69,73 @@ void		do_inst(t_lst **a, t_lst **b, char *line)
 	}
 }
 
-void	print_stack(t_lst *lst_a, t_lst *lst_b)
+void	print_stack(t_lst *lst_a, t_lst *lst_b, t_flag fl)
 {
-	// t_lst *lst_a;
-	// t_lst *lst_b;
+	int i;
 
-	// lst_a = *a;
-	// lst_b = *b;
-	ft_printf(" ___________________________\n");
+	i = 0;
+	// ft_printf("%s", "\x1B[46m");
+	ft_printf(" ___________________________ \n");//%s\n", "\x1B[0m");
 	ft_printf("|%10s   |%10s   |\n", "stack A", "stack B");
 	ft_printf("|_____________|_____________|\n");
+	// ft_printf(ESC "[0m");
 	while (lst_a || lst_b)
 	{
 		if (lst_a)
 		{
-			ft_printf("| %11lld ", lst_a->num);
+			ft_printf("|");
+			(((i < 2) && ((fl.color == 1) || (fl.color == 3))) || 
+			(fl.color == 4) || (fl.color == 6)) ?
+			(ft_printf("%s", "\x1B[46m")) : 0;
+			ft_printf(" %11lld ", lst_a->num);
 			lst_a = lst_a->next;
+			(((i < 2) && ((fl.color == 1) || (fl.color == 3))) || 
+			(fl.color == 4) || (fl.color == 6)) ?
+			(ft_printf("%s", "\x1B[0m")) : 0;
 		}
 		else
 			ft_printf("| %11c ", ' ');
 		if (lst_b)
 		{
-			ft_printf("| %11lld ", lst_b->num);
+			ft_printf("|");
+			(((i < 2) && ((fl.color == 2) || (fl.color == 3))) || 
+			(fl.color == 5) || (fl.color == 6)) ?
+			(ft_printf("%s", "\x1B[46m")) : 0;
+			ft_printf(" %11lld ", lst_b->num);
 			lst_b = lst_b->next;
+			(((i < 2) && ((fl.color == 2) || (fl.color == 3))) || 
+			(fl.color == 5) || (fl.color == 6)) ?
+			(ft_printf("%s", "\x1B[0m")) : 0;
 		}
 		else
 			ft_printf("| %11c ", ' ');
 		ft_printf("|\n");
+		++i;
 	}
-	ft_printf("|_____________|_____________|\n");//2 147 483 647
-	// printf("%11s %11s\n", "stack A", "stack B");
+	ft_printf("|_____________|_____________|\n");
 }
 
-void		read_inst(t_lst **a, t_lst **b, t_flag fl)
+void		color_num(char *line, t_flag *fl)
+{
+	if (!ft_strcmp("sa\0" ,line))
+		fl->color = 1;
+	else if (!ft_strcmp("sb\0", line))
+		fl->color = 2;
+	else if (!ft_strcmp("ss\0", line))
+		fl->color = 3;
+	else if (!ft_strcmp("ra\0", line) || !ft_strcmp("rra\0", line))
+		fl->color = 4;
+	else if (!ft_strcmp("rb\0", line) || !ft_strcmp("rrb\0", line))
+		fl->color = 5;
+	else if (!ft_strcmp("pa\0", line) || !ft_strcmp("pb\0", line) ||
+			!ft_strcmp("rr\0", line) || !ft_strcmp("rrr\0", line))
+		fl->color = 6;
+	else
+		fl->color = 0;
+	
+}
+
+void		read_inst(t_lst **a, t_lst **b, t_flag *fl)
 {
 	char	*line;
 	int		z;
@@ -110,9 +144,9 @@ void		read_inst(t_lst **a, t_lst **b, t_flag fl)
 	while ((z = get_next_line(0, &line)))
 	{
 		do_inst(a, b, line);
+		(fl->c) ? (color_num(line, fl)) : 0;
 		(line) ? free(line) : 0;
-		// (fl.v) ? (write_stack(*a, *b)) : 0;
-		(fl.v) ? (print_stack(*a, *b)) : 0;
+		(fl->v || fl->c) ? (print_stack(*a, *b, *fl)) : 0;
 	}
 	(line) ? free(line) : 0;
 }
@@ -122,6 +156,7 @@ void		flags_zero(t_flag *fl)
 	fl->c = 0;
 	fl->f = 0;
 	fl->v = 0;
+	fl->color = 0;
 }
 
 int			main(int ac, char **av)
@@ -141,6 +176,12 @@ int			main(int ac, char **av)
 		++av;
 		--ac;
 	}
+	if (!ft_strcmp("-c\0", av[1]))
+	{
+		fl.c = 1;
+		++av;
+		--ac;
+	}
 	if (!is_av_valid(ac, av))
 		ft_error(NULL, NULL);
 	else if (ac == 2)
@@ -148,7 +189,7 @@ int			main(int ac, char **av)
 	else
 		a = read_stack(av, ac, a);
 	check_valid_elems(a);
-	read_inst(&a, &b, fl);
+	read_inst(&a, &b, &fl);
 	check_is_sort(a, b);
 	return (0);
 }
