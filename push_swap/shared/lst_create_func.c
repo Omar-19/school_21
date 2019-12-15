@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   lst_create_func.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/15 18:16:51 by fyuko             #+#    #+#             */
+/*   Updated: 2019/12/15 18:16:53 by fyuko            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/header_ps.h"
 
-t_lst	*ft_del_elem(char **str, t_lst *ptr)
+t_lst			*ft_del_elem(char **str, t_lst *ptr)
 {
 	free(*str);
 	free(ptr);
@@ -35,39 +47,27 @@ long long int	ft_atoi_long(const char *str)
 	return (number);
 }
 
-t_lst	*creat_el(char *av, t_lst *a)
+t_lst			*creat_el(char *av, t_lst *a)
 {
 	t_lst	*tmp;
 	char	*p;
 	char	*str;
 
 	p = NULL;
-	// printf("S\n");
 	if (!(tmp = (t_lst*)malloc(sizeof(t_lst))))
 		return (NULL);
 	tmp->num = ft_atoi_long(av);
-	// printf("->num = %lld\n", tmp->num);
 	(tmp->num > 2147483647 || tmp->num < -2147483648) ? (ft_error(a, NULL)) : 0;
 	str = ft_itoa(tmp->num);
-	// printf("S\n");
-	// printf("s === %s\n", str);
 	if ((p = ft_strchr(av, ' ')))
 	{
-		// printf("S\n");
 		if (ft_strncmp(av, str, p - av))
 			return (ft_del_elem(&str, tmp));
 	}
 	else
 	{
-		// ft_printf( "");
-		// printf("S\n");
-		// printf("AV = |%s|    STR = |%s|\n", av + 1, str);
 		if (ft_strcmp(av, str))
-		{
-			// printf("S\n");
 			return (ft_del_elem(&str, tmp));
-		}
-		// printf("S\n");
 	}
 	free(str);
 	tmp->next = NULL;

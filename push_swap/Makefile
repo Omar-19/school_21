@@ -15,10 +15,14 @@ S_SRC =			check_input.c \
 				gnl.c \
 				insertion_sort.c \
 				lst_create_func.c \
+				print_elems.c \
 				min_sorting.c \
+				read_instr.c \
 				sort_commands_part1.c \
 				sort_commands_part2.c \
 				sort_commands_part3.c \
+				sort_func.c \
+				sort_helpers.c \
 				stack_operations.c \
 
 P_SRC =			push_main.c \

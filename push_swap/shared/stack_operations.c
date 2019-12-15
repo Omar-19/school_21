@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_operations.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/15 18:17:57 by fyuko             #+#    #+#             */
+/*   Updated: 2019/12/15 18:17:59 by fyuko            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/header_ps.h"
 
 void		ft_clear_stack(t_lst *a)
@@ -12,7 +24,7 @@ void		ft_clear_stack(t_lst *a)
 	}
 }
 
-int		stack_len(t_lst *head)
+int			stack_len(t_lst *head)
 {
 	int num;
 
@@ -25,7 +37,7 @@ int		stack_len(t_lst *head)
 	return (num);
 }
 
-void	ft_error(t_lst *a, t_lst *b)
+void		ft_error(t_lst *a, t_lst *b)
 {
 	(a) ? (ft_clear_stack(a)) : 0;
 	(b) ? (ft_clear_stack(b)) : 0;
@@ -33,7 +45,7 @@ void	ft_error(t_lst *a, t_lst *b)
 	exit(0);
 }
 
-t_lst	*read_stack(char **av, int ac, t_lst *a)
+t_lst		*read_stack(char **av, int ac, t_lst *a)
 {
 	t_lst	*head;
 	t_lst	*tmp;
@@ -42,7 +54,7 @@ t_lst	*read_stack(char **av, int ac, t_lst *a)
 	i = 1;
 	head = read_str_stack(av[i++], a);
 	tmp = head;
-	while(i < (size_t)ac)
+	while (i < (size_t)ac)
 	{
 		while (tmp->next)
 			tmp = tmp->next;
@@ -51,7 +63,7 @@ t_lst	*read_stack(char **av, int ac, t_lst *a)
 	return (head);
 }
 
-t_lst	*read_str_stack(char *av, t_lst *a)
+t_lst		*read_str_stack(char *av, t_lst *a)
 {
 	t_lst	*head;
 	size_t	i;
@@ -59,13 +71,10 @@ t_lst	*read_str_stack(char *av, t_lst *a)
 	t_lst	*tmp;
 
 	i = 1;
-	// printf("S\n");
 	if (!(s = ft_strchr(av, ' ')))
 	{
-		// printf("S\n");
 		(!(head = creat_el(av, a))) ? ft_error(head, NULL) : 0;
-		return(head);
-		// printf("S\n");
+		return (head);
 	}
 	(!(head = creat_el(av, a))) ? ft_error(head, NULL) : 0;
 	tmp = head;

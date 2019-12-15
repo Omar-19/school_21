@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   min_sorting.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/15 18:16:59 by fyuko             #+#    #+#             */
+/*   Updated: 2019/12/15 18:17:00 by fyuko            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/header_ps.h"
 
 void	ft_create_b(t_lst **a, t_lst **b, int n)
@@ -20,7 +32,8 @@ void	ft_sort_three(t_lst *a)
 		sa(a, 1);
 		if (a->num < a->next->num && a->num > a->next->next->num)
 			rra(a, 1);
-		else if (a->num > a->next->next->num && a->next->num < a->next->next->num)
+		else if (a->num > a->next->next->num &&
+			a->next->num < a->next->next->num)
 			ra(a, 1);
 		else
 			return ;

@@ -1,3 +1,0 @@
-gcc shared/*.c libft/libft/*.c  -I libft/includes/
-
-gcc checker/*.c shared/check_input.c shared/gnl.c shared/insertion_sort.c shared/lst_create_func.c shared/min_sorting.c shared/sort_commands_part1.c shared/sort_commands_part2.c shared/sort_commands_part3.c shared/stack_operations.c libft/libft/*.c  -I libft/includes/
