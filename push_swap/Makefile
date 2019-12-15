@@ -9,7 +9,7 @@ OBJ_DIR =		obj/
 S_SRC_DIR =		shared/
 P_SRC_DIR =		push_swap_dir/
 C_SRC_DIR =		checker_dir/
-LIBFT =			libft/
+LIBFT =			ft_printf/
 
 S_SRC =			check_input.c \
 				gnl.c \

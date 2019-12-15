@@ -5,7 +5,7 @@
 # include <string.h>
 # include <fcntl.h>
 # include <limits.h>
-# include "../libft/includes/header.h" // 4 1 6 2 7 3 pb ra sa pa rb rrb rra
+# include "../libft/includes/header.h"
 # include "../libft/libft/libft.h"
 # define BUFF_SIZE 2
 # define ESC "\x1b"
@@ -24,6 +24,14 @@ typedef struct		s_res
 	int rarrb;
 	int rrarb;
 }					t_res;
+
+typedef struct		s_flag
+{
+	int	c;
+	int v;
+	int f;
+}					t_flag;
+
 
 typedef struct		s_insert
 {
