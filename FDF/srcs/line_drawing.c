@@ -1,5 +1,37 @@
 # include "../includes/header.h"
 
+int		ft_col(int col, int i)
+{
+	int r;
+	int g;
+	int b;
+
+	r = 255;
+	g = 0;
+	b = 0;
+	while (i > 0)
+	{
+		if (r && !b)
+		{
+			--r;
+			++g;
+		}
+		else if (g && !r)
+		{
+			--g;
+			++b;
+		}
+		else
+		{
+			--b;
+			++r;
+		}
+		--i;
+	}
+	col = r * 256 * 256 + g * 256 + b;
+	return(col);
+}
+
 void	line_y(t_mlx pr, t_line ptr)
 {
 	float tmp;
@@ -8,19 +40,18 @@ void	line_y(t_mlx pr, t_line ptr)
 	int dl;
 	int i;
 
-	pr.color1 = RED - 1;
-	i = 0;
+	pr.color1 = RED;
+	i = 1;
 	tmp = fabsf(ptr.x - ptr.x0) / fabsf(ptr.y - ptr.y0);
 	if (ptr.x0 > ptr.x)
 		opt = -1;
 	else
 		opt = 1;
-	// printf("-------------------\n");
 	while (ptr.y0 <= ptr.y)
 	{
 		// printf("col = %d i = %d\n", (pr.color1 + i * 2), i);
 		if (ptr.y0 < HEIGHT && ptr.y0 >= 0 && ptr.x0 < WIDTH && ptr.x0 >= 0)
-			pr.pix_m[(int)ptr.y0 * WIDTH + (int)ptr.x0] = pr.color1;// - i * 2;// + (i++) * pr.g;
+			pr.pix_m[(int)ptr.y0 * WIDTH + (int)ptr.x0] = ft_col(pr.color1, i++);// * 2;// + (i++) * pr.g;
 		er += tmp;
 		++i;
 		if (er >= 0.5)
@@ -41,7 +72,7 @@ void	line_x(t_mlx pr, t_line ptr)
 	int dl;
 	int i;
 
-	pr.color1 = RED - 1;
+	pr.color1 = RED;
 	i = 0;
 	tmp = fabsf(ptr.y - ptr.y0) / fabsf(ptr.x - ptr.x0);
 	if (ptr.y0 > ptr.y)
@@ -51,7 +82,7 @@ void	line_x(t_mlx pr, t_line ptr)
 	while (ptr.x0 <= ptr.x)
 	{
 		if (ptr.x0 < HEIGHT && ptr.x0 >= 0 && ptr.y0 < WIDTH && ptr.y0 >= 0)
-			pr.pix_m[(int)ptr.y0 * WIDTH + (int)ptr.x0] = pr.color1;// + i;// + (i++) * pr.g;
+			pr.pix_m[(int)ptr.y0 * WIDTH + (int)ptr.x0] = ft_col(pr.color1, i++);// + (i++) * pr.g;
 		er += tmp;
 		if (er >= 0.5)
 		{

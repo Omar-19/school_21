@@ -26,7 +26,10 @@ int	key_press(int key, void *param)
 	ptr = (t_mlx *)param;
 	// printf("key = %d\n", key);
 	if (key == NUM_PAD_ESC)
+	{
 		exit(1);
+		free(ptr);
+	}
 	else if (key == NUM_PAD_0 || key == NUM_PAD_2 ||
 			key == NUM_PAD_4 || key == NUM_PAD_5 ||
 			key == NUM_PAD_6 || key == NUM_PAD_7 || key == NUM_PAD_8 ||

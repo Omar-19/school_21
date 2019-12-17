@@ -96,21 +96,23 @@ void	resize_map(t_mlx *ptr, int l)
 
 int		main(int argc, char **argv)
 {
-	t_mlx	ptr;
+	t_mlx	*ptr;
 	t_file	file;
 	t_strm	*head_s;
 	t_strm	*tmp;
 
-	ptr.size_line = 40;
+	ptr = (t_mlx *)malloc(sizeof(t_mlx));
+	ptr->size_line = 40;
 	if (argc != 2)
 		return (0);
-	ptr.color1 = RED;
+	ptr->color1 = RED;
 	file.fd = open(argv[1], O_RDONLY);
-	readMap(&ptr, &file, &head_s, &tmp);
-	createMap(&ptr, &file, &head_s, &tmp);
-	ptr.img_ptr = NULL;
-	ptr.color1 = YELLOW;
-	ptr.color2 = RED;
-	createImage(&ptr);
+	readMap(ptr, &file, &head_s, &tmp);
+	createMap(ptr, &file, &head_s, &tmp);
+	ptr->img_ptr = NULL;
+	// ptr.color1 = YELLOW;
+	// ptr.color2 = RED;
+	createImage(ptr);
+	// free(ptr);
 	return (0);
 }

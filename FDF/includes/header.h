@@ -54,9 +54,8 @@ typedef struct		s_mlx
 	float			dx;
 	float			dy;
 	float			dz;
-	// int				zmxp;
-	// int				zmxn;
-	// int				zmn;
+	// int				*z_max;
+	// int				*z_min;
 }					t_mlx;
 
 typedef struct 		s_line
@@ -81,6 +80,7 @@ typedef	struct		s_strm
 	
 }					t_strm;
 
+t_point				*creat_el(int x, int y, int z, t_mlx *ptr);
 void				writeMatrix(t_mlx ptr);
 void				matrixConversion(t_mlx *ptr);
 void				createGridСoordinates(t_mlx *ptr);
