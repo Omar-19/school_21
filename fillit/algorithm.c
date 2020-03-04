@@ -3,57 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: simbo <simbo@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/20 21:53:57 by rthai             #+#    #+#             */
-/*   Updated: 2019/09/22 01:11:48 by simbo            ###   ########.fr       */
+/*   Created: 2019/09/30 16:29:37 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/30 16:32:56 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-#include "libft.h"
 
-int		algorithm_rec(t_tetrem *tetrem, t_map *map)
+int		algorithm_rec(t_tetrem *tet, t_map *map)
 {
-	int		j;
-	int		i;
-
-	i = 0;
-	if (tetrem->tetreminka == 0)
+	tet->y = 0;
+	if (tet->tetreminka == 0)
 		return (1);
-	while (i < map->size - tetrem->height)
+	while (tet->y <= map->size - tet->height)
 	{
-		j = 0;
-		while (j < map->size - tetrem->width)
+		tet->x = 0;
+		while (tet->x <= map->size - tet->width)
 		{
-			if (CHECK_PUSH(tetrem->tetreminka >> j, *(uint64_t*)(map->map_array + i)))
+			if (CHECK_PUSH(tet->tetreminka >> tet->x,
+			*(uint64_t*)(map->array + tet->y)))
 			{
-				*(uint64_t*)(map->map_array + i) ^= tetrem->tetreminka >> j;
-				// print_map(map->map_array);
-				// printf("i = %dj = %d\n", i, j);
-				if (algorithm_rec(tetrem + 1, map))
+				*(uint64_t*)(map->array + tet->y) ^= tet->tetreminka >> tet->x;
+				if (algorithm_rec(tet + 1, map))
 					return (1);
-				*(uint64_t*)(map->map_array + i) ^= tetrem->tetreminka >> j;
+				*(uint64_t*)(map->array + tet->y) ^= tet->tetreminka >> tet->x;
 			}
-			j++;
+			tet->x++;
 		}
-		i++;
+		tet->y++;
 	}
 	return (0);
 }
 
 void	algorithm(t_tetrem *tetrem, t_map *map)
 {
-	int a;
-
 	while (map->size < 16)
 	{
-		// printf("lsol = %d\n", map->size);
-		ft_bzero(map->map_array, sizeof(uint16_t) * 16);
-		if((a = algorithm_rec(tetrem, map)))
+		ft_bzero(map->array, sizeof(uint16_t) * 16);
+		if (algorithm_rec(tetrem, map))
 			return ;
-		// print_map(map->map_array);
-		// printf("\n");
 		map->size++;
 	}
 }

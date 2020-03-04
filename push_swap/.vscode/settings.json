@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "__locale": "c",
-        "locale": "c",
-        "header_ps.h": "c",
-        "ratio": "c"
-    }
-}

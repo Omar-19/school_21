@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_size.c                                     :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fyuko <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/13 19:49:36 by fyuko             #+#    #+#             */
-/*   Updated: 2019/09/11 20:53:48 by fyuko            ###   ########.fr       */
+/*   Created: 2019/09/08 13:51:43 by fyuko             #+#    #+#             */
+/*   Updated: 2019/09/10 21:11:05 by fyuko            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_list_size(t_list *lst)
+char	*ft_strnew(size_t size)
 {
-	int		i;
+	char	*ptr;
+	size_t	i;
 
 	i = 0;
-	while (lst)
+	if (!(size + 1 > size))
+		return (NULL);
+	if (!(ptr = (char *)malloc(sizeof(char) * size + 1)))
+		return (NULL);
+	while (i <= size)
 	{
-		i++;
-		lst = lst->next;
+		ptr[i] = '\0';
+		++i;
 	}
-	return (i);
+	ptr[i] = '\0';
+	return (ptr);
 }
